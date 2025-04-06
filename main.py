@@ -41,8 +41,13 @@ def main():
 
         updatable.update(dt)
 
-        for object in drawable:
-            object.draw(screen)
+        for asteroid in asteroids:
+            if Asteroid.collision(asteroid, player):
+                print("Game over!")
+                return
+
+        for thing in drawable:
+            thing.draw(screen)
 
         clock.tick(60)
         dt = clock.get_time() / 1000
