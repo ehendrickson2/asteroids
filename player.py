@@ -1,6 +1,7 @@
 import pygame
 
 from circleshape import *
+from tools import Tools
 from constants import (
     PLAYER_RADIUS,
     PLAYER_TURN_SPEED,
@@ -16,6 +17,7 @@ class Player(CircleShape):
         super().__init__(x, y, PLAYER_RADIUS)
         self.rotation = 0
         self.shoot_timer = 0
+        self.score = 0
 
     def draw(self, screen):
         pygame.draw.polygon(screen, "white", self.triangle(), 2)
@@ -40,6 +42,10 @@ class Player(CircleShape):
         bullet.velocity = (
             pygame.Vector2(0, 1).rotate(self.rotation) * PLAYER_SHOOT_SPEED
         )
+
+    def add_score(self, amount):
+        self.score += amount
+        Tools.update_text(self.score)
 
     def update(self, dt):
         keys = pygame.key.get_pressed()
