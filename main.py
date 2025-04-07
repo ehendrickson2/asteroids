@@ -1,4 +1,5 @@
 import pygame
+import os
 from constants import *
 from tools import Tools
 from player import Player, Shot
@@ -17,6 +18,13 @@ def main():
     # Screen setup
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     screen_rect = screen.get_rect()
+
+    # Background image
+    image = pygame.transform.scale(
+        pygame.image.load(os.path.join(BASE_PATH, "background.jpeg")).convert(),
+        (SCREEN_WIDTH, SCREEN_HEIGHT),
+    )
+    image.set_alpha(100)
 
     # Setup tools and score display
     tools = Tools(screen)
@@ -57,6 +65,7 @@ def main():
                 return
         # Set black background
         screen.fill((0, 0, 0))
+        screen.blit(image, (0, 0))
 
         updatable.update(dt)
 

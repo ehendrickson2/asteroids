@@ -1,5 +1,7 @@
 import pygame
 
+BASE_PATH = "images/"
+
 SCREEN_WIDTH = 1280
 SCREEN_HEIGHT = 720
 
