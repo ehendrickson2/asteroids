@@ -65,6 +65,7 @@ def main():
                 return
         # Set black background
         screen.fill((0, 0, 0))
+        # Render background
         screen.blit(image, (0, 0))
 
         updatable.update(dt)
